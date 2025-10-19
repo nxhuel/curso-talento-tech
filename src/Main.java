@@ -27,7 +27,7 @@ public class Main {
         savedArticle.setName(name);
         savedArticle.setDescription(description);
         articles.add(savedArticle);
-        System.out.println("Artículo creado con éxito ✅");
+        System.out.println("Artículo creado con éxito");
 
     }
 
