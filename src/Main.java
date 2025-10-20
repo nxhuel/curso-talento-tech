@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -12,20 +11,20 @@ public class Main {
         return idCounter++;
     }
 
-
     public static void createArticle() {
         scanner.nextLine();
         Article savedArticle = new Article();
 
-        System.out.println("Ingrese el nombre del articulo: ");
-        String name = scanner.nextLine();
-
         System.out.println("Ingrese la descripción del articulo: ");
         String description = scanner.nextLine();
 
+        System.out.println("Ingrese el precio del articulo: ");
+        Double price = scanner.nextDouble();
+        scanner.nextLine();
+
         savedArticle.setId(generateId());
-        savedArticle.setName(name);
         savedArticle.setDescription(description);
+        savedArticle.setPrice(price);
         articles.add(savedArticle);
         System.out.println("Artículo creado con éxito");
 
@@ -39,7 +38,7 @@ public class Main {
 
         System.out.println("=== Lista de Articulos ===");
         for (Article article : articles) {
-            System.out.println(article.getId() + ". " + article.getName() + " - " + article.getDescription());
+            System.out.println(article.getId() + ". " + article.getDescription() + " - " + article.getPrice());
         }
     }
 
@@ -53,7 +52,7 @@ public class Main {
         if (found == null) {
             System.out.println("No existe artículo con ese ID");
         } else {
-            System.out.println("➡ " + found.getName() + " - " + found.getDescription());
+            System.out.println("➡ " + found.getDescription() + " - " + found.getPrice());
         }
     }
 
@@ -68,14 +67,15 @@ public class Main {
             return;
         }
 
-        System.out.println("Ingrese el nuevo nombre del articulo " + found.getName() + ": ");
-        String name = scanner.nextLine();
-
         System.out.println("Ingrese la nueva descripción del articulo" + found.getDescription() + ": ");
         String description = scanner.nextLine();
 
-        found.setName(name);
+        System.out.println("Ingrese el nuevo precio del articulo " + found.getPrice() + ": ");
+        Double price = scanner.nextDouble();
+        scanner.nextLine();
+
         found.setDescription(description);
+        found.setPrice(price);
 
         System.out.println("Artículo actualizado con éxito");
     }
@@ -106,10 +106,10 @@ public class Main {
 
     public static void main(String[] args) {
 //        Datos de prueba
-        Article article1 = new Article(generateId(), "Messi", "Historia del 10");
-        Article article2 = new Article(generateId(), "La NASA", "Misterios de la nasa");
-        Article article3 = new Article(generateId(), "IA", "La innovacion que ofrece la IA");
-        Article article4 = new Article(generateId(), "Casos Policiales", "Top 10 novelas policiaes");
+        Article article1 = new Article(generateId(), "Historia del 10", 2134);
+        Article article2 = new Article(generateId(), "Misterios de la nasa", 1222);
+        Article article3 = new Article(generateId(), "La innovacion que ofrece la IA", 1009);
+        Article article4 = new Article(generateId(), "Top 10 novelas policiaes", 9823);
 
         articles.add(article1);
         articles.add(article2);
